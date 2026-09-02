@@ -8,20 +8,23 @@ public:
 	AActor();
 	virtual ~AActor();
 
-	inline FVector2D GetActorLocation() const
-	{
-		return Location;
-	}
+	//inline FVector2D GetActorLocation() const
+	//{
+	//	return Location;
+	//}
 
-	inline void SetActorLocation(const FVector2D InValue)
-	{
-		//Location.SetX(InValue.GetX());
-		//Location.SetY(InValue.GetY());
+	//inline void SetActorLocation(const FVector2D InValue)
+	//{
+	//	//Location.SetX(InValue.GetX());
+	//	//Location.SetY(InValue.GetY());
 
-		Location = InValue;
-	}
+	//	Location = InValue;
+	//}
 
-protected:
+	virtual UWorld* GetWorld() const override final;
+
+
+//protected:
 	FVector2D Location;
 };
 
