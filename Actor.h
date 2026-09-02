@@ -21,6 +21,9 @@ public:
 	//	Location = InValue;
 	//}
 
+	virtual void Tick();
+	virtual void Render();
+
 	virtual UWorld* GetWorld() const override final;
 
 
