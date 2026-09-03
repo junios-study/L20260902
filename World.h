@@ -15,7 +15,7 @@ public:
 	void Render();
 
 	template<typename T>
-	void SpawnActor();
+	AActor* SpawnActor();
 
 
 	std::vector<AActor*>& GetActors()
@@ -28,7 +28,10 @@ protected:
 };
 
 template<typename T>
-inline void UWorld::SpawnActor()
+inline AActor* UWorld::SpawnActor()
 {
-	Actors.push_back(new T);
+	AActor* NewActor = new T;
+	Actors.push_back(NewActor);
+
+	return NewActor;
 }

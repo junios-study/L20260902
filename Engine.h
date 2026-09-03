@@ -2,6 +2,7 @@
 #include "Object.h"
 
 class UWorld;
+class FInputDevice;
 
 class UEngine : public UObject
 {
@@ -18,8 +19,7 @@ public:
 
 
 protected:
-	//class UWorld* World;
-	UWorld* World = nullptr;
 	bool bIsRunning = true;
+	FInputDevice* InputDevice = nullptr;
 };
 

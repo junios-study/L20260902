@@ -4,7 +4,7 @@
 #include "Actor.h"
 #include "Pawn.h"
 
-UEngine::UEngine() : World(nullptr)
+UEngine::UEngine()
 {
 }
 
