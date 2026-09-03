@@ -5,6 +5,7 @@
 class UWorld;
 class FInputDevice;
 class FRenderer;
+class AActor;
 
 class UEngine : public UObject
 {
@@ -22,6 +23,8 @@ public:
 	void Exit();
 
 	void OpenLevel(std::string MapName);
+
+	static bool Compare(AActor* A, AActor* B);
 
 	virtual UWorld* GetWorld() const override;
 	const FRenderer* GetRenderer();

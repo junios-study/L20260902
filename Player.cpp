@@ -5,6 +5,7 @@
 APlayer::APlayer()
 {
 	Shape = 'P';
+	Layer = 100;
 }
 
 APlayer::~APlayer()
