@@ -4,31 +4,40 @@
 
 using namespace std;
 
-class StaticClass
+class Singleton
 {
+protected:
+	Singleton()
+	{
+	}
+
 public:
-	StaticClass()
+	static Singleton* GetInstance()
 	{
-		StaticClass::Count++;
+		if (!Singleton::Instance)
+		{
+			Singleton::Instance = new Singleton();
+		}
+
+		return Singleton::Instance;
 	}
 
-	virtual ~StaticClass()
-	{
-		StaticClass::Count--;
-	}
-
-	static int Count;
+protected:
+	static Singleton* Instance;
 };
 
-int StaticClass::Count = 0;
+Singleton* Singleton::Instance = nullptr;
+
+
 
 
 int main()
 {
-	StaticClass* A = new StaticClass();
-	delete A;
-	StaticClass* B;
-	std::cout << StaticClass::Count << std::endl;
+	cout << Singleton::GetInstance() << endl;
+	cout << Singleton::GetInstance() << endl;
+	cout << Singleton::GetInstance() << endl;
+	cout << Singleton::GetInstance() << endl;
+
 
 	//UEngine* MyEngine = new UEngine();
 
