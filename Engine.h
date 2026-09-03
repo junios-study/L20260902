@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include <string>
 
 class UWorld;
 class FInputDevice;
@@ -15,6 +16,8 @@ public:
 	void Init();
 	void Run();
 	void Exit();
+
+	void OpenLevel(std::string MapName);
 
 	virtual UWorld* GetWorld() const override;
 	const FRenderer* GetRenderer();

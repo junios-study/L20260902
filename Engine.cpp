@@ -1,8 +1,11 @@
 #include "Engine.h"
 #include "World.h"
-#include <vector>
+#include "Floor.h"
+#include "Monster.h"
+#include "Goal.h"
+#include "Wall.h"
+#include "Player.h"
 #include "Actor.h"
-#include "Pawn.h"
 
 UEngine::UEngine()
 {
@@ -22,24 +25,8 @@ void UEngine::Init()
 	//map loading
 	World = new UWorld();
 
+	OpenLevel("1.umap");
 
-	char Map[10][10] =
-	{
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 2, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 3, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 4, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	};
-
-	//openLevel
-	World->SpawnActor<AActor>();
-	World->SpawnActor<APawn>();
 }
 
 void UEngine::Run()
@@ -55,6 +42,56 @@ void UEngine::Run()
 void UEngine::Exit()
 {
 
+}
+
+void UEngine::OpenLevel(std::string MapName)
+{
+	//OpenLevel
+	char Map[10][10] =
+	{
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 2, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 3, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 4, 1},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	};
+
+	for (int Y = 0; Y < 10; ++Y)
+	{
+		for (int X = 0; X < 10; ++X)
+		{
+			if (Map[Y][X] == 1)
+			{
+				AActor* NewActor = World->SpawnActor<AWall>();
+				NewActor->Location = FVector2D(X, Y);
+			}
+			else if (Map[Y][X] == 0)
+			{
+				AActor* NewActor = World->SpawnActor<AFloor>();
+				NewActor->Location = FVector2D(X, Y);
+			}
+			else if (Map[Y][X] == 2)
+			{
+				AActor* NewActor = World->SpawnActor<APlayer>();
+				NewActor->Location = FVector2D(X, Y);
+			}
+			else if (Map[Y][X] == 3)
+			{
+				AActor* NewActor = World->SpawnActor<AMonster>();
+				NewActor->Location = FVector2D(X, Y);
+			}
+			else if (Map[Y][X] == 4)
+			{
+				AActor* NewActor = World->SpawnActor<AGoal>();
+				NewActor->Location = FVector2D(X, Y);
+			}
+		}
+	}
 }
 
 UWorld* UEngine::GetWorld() const
