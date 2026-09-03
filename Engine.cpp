@@ -22,6 +22,21 @@ void UEngine::Init()
 	//map loading
 	World = new UWorld();
 
+
+	char Map[10][10] =
+	{
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 2, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 3, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 4, 1},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	};
+
 	//openLevel
 	World->SpawnActor<AActor>();
 	World->SpawnActor<APawn>();
@@ -45,4 +60,9 @@ void UEngine::Exit()
 UWorld* UEngine::GetWorld() const
 {
 	return World;
+}
+
+const FRenderer* UEngine::GetRenderer()
+{
+	return Renderer;
 }

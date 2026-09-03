@@ -29,5 +29,6 @@ public:
 
 //protected:
 	FVector2D Location;
+	char Shape;
 };
 

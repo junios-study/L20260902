@@ -3,6 +3,7 @@
 
 class UWorld;
 class FInputDevice;
+class FRenderer;
 
 class UEngine : public UObject
 {
@@ -16,10 +17,11 @@ public:
 	void Exit();
 
 	virtual UWorld* GetWorld() const override;
-
+	const FRenderer* GetRenderer();
 
 protected:
 	bool bIsRunning = true;
 	FInputDevice* InputDevice = nullptr;
+	FRenderer* Renderer = nullptr;
 };
 

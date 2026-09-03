@@ -1,4 +1,5 @@
 #include "InputDevice.h"
+#include <conio.h>
 
 FInputDevice::FInputDevice()
 {
@@ -10,6 +11,7 @@ FInputDevice::~FInputDevice()
 
 int FInputDevice::Input()
 {
+	KeyCode = _getch();
 
-	return 0;
+	return KeyCode;
 }
