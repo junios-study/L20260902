@@ -8,6 +8,6 @@ public:
 	FRenderer();
 	virtual ~FRenderer();
 
-	void Render(const AActor* DrawActor);
+	void Render(AActor* DrawActor);
 };
 

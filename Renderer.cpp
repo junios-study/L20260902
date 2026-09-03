@@ -9,6 +9,6 @@ FRenderer::~FRenderer()
 {
 }
 
-void FRenderer::Render(const AActor* DrawActor)
+void FRenderer::Render(AActor* DrawActor)
 {
 }

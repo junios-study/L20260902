@@ -7,8 +7,22 @@
 #include "Player.h"
 #include "Actor.h"
 
+UEngine* UEngine::Instance = nullptr;
+//UEngine* GEngine = nullptr;
+
 UEngine::UEngine()
 {
+}
+
+UEngine* UEngine::GetInstance()
+{
+	if (!Instance)
+	{
+		Instance = new UEngine();
+		//GEngine = Instance;
+	}
+
+	return Instance;
 }
 
 UEngine::~UEngine()

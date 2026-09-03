@@ -8,10 +8,14 @@ class FRenderer;
 
 class UEngine : public UObject
 {
-public:
+protected:
 	UEngine();
 
+	static UEngine* Instance;
+public:
 	virtual ~UEngine();
+
+	static UEngine* GetInstance();
 
 	void Init();
 	void Run();
@@ -27,4 +31,9 @@ protected:
 	FInputDevice* InputDevice = nullptr;
 	FRenderer* Renderer = nullptr;
 };
+
+
+#define GEngine		UEngine::GetInstance()
+
+//extern UEngine* GEngine;
 

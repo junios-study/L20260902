@@ -33,15 +33,13 @@ Singleton* Singleton::Instance = nullptr;
 
 int main()
 {
-	cout << Singleton::GetInstance() << endl;
-	cout << Singleton::GetInstance() << endl;
-	cout << Singleton::GetInstance() << endl;
-	cout << Singleton::GetInstance() << endl;
+	//UEngine::GetInstance();
 
+	GEngine->Init();
 
-	//UEngine* MyEngine = new UEngine();
+	GEngine->Run();
 
-	//MyEngine->Init();
+	GEngine->Exit();
 
 
 	return 0;
