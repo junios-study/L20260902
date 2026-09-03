@@ -1,10 +1,39 @@
 #include "Engine.h"
 
+#include <iostream>
+
+using namespace std;
+
+class StaticClass
+{
+public:
+	StaticClass()
+	{
+		StaticClass::Count++;
+	}
+
+	virtual ~StaticClass()
+	{
+		StaticClass::Count--;
+	}
+
+	static int Count;
+};
+
+int StaticClass::Count = 0;
+
+
 int main()
 {
-	UEngine* MyEngine = new UEngine();
+	StaticClass* A = new StaticClass();
+	delete A;
+	StaticClass* B;
+	std::cout << StaticClass::Count << std::endl;
 
-	MyEngine->Init();
+	//UEngine* MyEngine = new UEngine();
+
+	//MyEngine->Init();
+
 
 	return 0;
 }

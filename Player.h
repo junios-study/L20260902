@@ -19,5 +19,6 @@ public:
 	virtual ~APlayer();
 
 
+	void IamPlayer() {}
 };
 
