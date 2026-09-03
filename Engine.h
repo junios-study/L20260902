@@ -26,7 +26,13 @@ public:
 	virtual UWorld* GetWorld() const override;
 	const FRenderer* GetRenderer();
 
+	FInputDevice* GetInputDevice()
+	{
+		return InputDevice;
+	}
+
 protected:
+	void Input();
 	bool bIsRunning = true;
 	FInputDevice* InputDevice = nullptr;
 	FRenderer* Renderer = nullptr;

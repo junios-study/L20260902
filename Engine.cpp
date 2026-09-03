@@ -6,6 +6,7 @@
 #include "Wall.h"
 #include "Player.h"
 #include "Actor.h"
+#include "InputDevice.h"
 
 UEngine* UEngine::Instance = nullptr;
 //UEngine* GEngine = nullptr;
@@ -36,6 +37,8 @@ UEngine::~UEngine()
 
 void UEngine::Init()
 {
+	InputDevice = new FInputDevice();
+
 	//map loading
 	World = new UWorld();
 
@@ -47,8 +50,9 @@ void UEngine::Run()
 {
 	while (bIsRunning)
 	{
-		//Input();
+		Input();
 		World->Tick();
+		system("cls");
 		World->Render();
 	}
 }
@@ -116,4 +120,9 @@ UWorld* UEngine::GetWorld() const
 const FRenderer* UEngine::GetRenderer()
 {
 	return Renderer;
+}
+
+void UEngine::Input()
+{
+	InputDevice->Input();
 }

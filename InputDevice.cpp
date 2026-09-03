@@ -11,7 +11,14 @@ FInputDevice::~FInputDevice()
 
 int FInputDevice::Input()
 {
-	KeyCode = _getch();
+	if (_kbhit())
+	{
+		KeyCode = _getch();
+	}
+	else
+	{
+		KeyCode = 0;
+	}
 
 	return KeyCode;
 }

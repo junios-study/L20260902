@@ -18,7 +18,6 @@ public:
 	APlayer();
 	virtual ~APlayer();
 
-
-	void IamPlayer() {}
+	virtual void Tick() override;
 };
 
