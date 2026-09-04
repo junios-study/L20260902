@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Actor.h"
 #include "InputDevice.h"
+#include "Renderer.h"
 
 
 UEngine* UEngine::Instance = nullptr;
@@ -41,6 +42,7 @@ UEngine::~UEngine()
 void UEngine::Init()
 {
 	InputDevice = new FInputDevice();
+	Renderer = new FRenderer();
 
 	//map loading
 	World = new UWorld();
@@ -55,8 +57,9 @@ void UEngine::Run()
 	{
 		Input();
 		World->Tick();
-		//system("cls");
+		Renderer->Clear();
 		World->Render();
+		Renderer->Present();
 	}
 }
 

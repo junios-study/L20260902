@@ -35,8 +35,9 @@ void FRenderer::Render(AActor* DrawActor) const
 void FRenderer::Clear()
 {
 	COORD Coord{ 0, 0 };
+	DWORD DW;
 	FillConsoleOutputCharacter(BufferHandle[CurrentBufferIndex],
-		' ', 80 * 25, Coord, nullptr);
+		' ', 80 * 25, Coord, &DW);
 }
 
 void FRenderer::Present()
