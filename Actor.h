@@ -31,5 +31,7 @@ public:
 	FVector2D Location;
 	char Shape;
 	int Layer = 0;
+
+	bool bIsCollisionEnable = false;
 };
 
