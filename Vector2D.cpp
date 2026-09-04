@@ -27,3 +27,14 @@ FVector2D FVector2D::operator+(const FVector2D& RHS) const
 {
 	return FVector2D(X + RHS.X, Y + RHS.Y);
 }
+
+bool FVector2D::operator==(const FVector2D& RHS) const
+{
+	return (X == RHS.X && Y == RHS.Y);
+	//return (X == RHS.X && Y == RHS.Y) ? true : false;
+	//if (X == RHS.X && Y == RHS.Y)
+	//{
+	//	return true;
+	//}
+	//return false;
+}

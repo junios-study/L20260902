@@ -134,6 +134,7 @@
     <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="SystemLibrary.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="World.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="SystemLibrary.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="World.h" />

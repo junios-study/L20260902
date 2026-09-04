@@ -14,6 +14,7 @@ struct FVector2D
 	virtual ~FVector2D();
 	//연산자 오버로딩
 	FVector2D operator+(const FVector2D& RHS) const;
+	bool operator==(const FVector2D& RHS) const;
 
 	int X;
 	int Y;
