@@ -28,6 +28,25 @@ int SDL_main(int argc, char* argv[])
 	while (true)
 	{
 		SDL_PollEvent(&MyEvent);
+
+		if (MyEvent.type == SDL_QUIT)
+		{
+			break;
+		}
+		else if (MyEvent.type == SDL_KEYDOWN)
+		{
+			if (MyEvent.key.keysym.sym == SDLK_ESCAPE)
+			{
+				break;
+			}
+		}
+
+		SDL_SetRenderDrawColor(MyRenderer, 0, 0, 0, 0);
+		SDL_RenderClear(MyRenderer);
+
+
+		SDL_RenderPresent(MyRenderer);
+
 	}
 
 	SDL_Quit();
