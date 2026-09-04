@@ -41,12 +41,16 @@ int SDL_main(int argc, char* argv[])
 			}
 		}
 
+		//back buffer
 		SDL_SetRenderDrawColor(MyRenderer, 0, 0, 0, 0);
 		SDL_RenderClear(MyRenderer);
 
+		SDL_Rect MyRect{ 100, 100, 100, 100 };
+		SDL_SetRenderDrawColor(MyRenderer, 255, 0, 0, 0);
+
+		SDL_RenderDrawRect(MyRenderer, &MyRect);
 
 		SDL_RenderPresent(MyRenderer);
-
 	}
 
 	SDL_Quit();
