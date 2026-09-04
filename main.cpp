@@ -25,9 +25,9 @@ int SDL_main(int argc, char* argv[])
 
 	SDL_Event MyEvent;
 
-	while (SDL_PollEvent(&MyEvent))
+	while (true)
 	{
-
+		SDL_PollEvent(&MyEvent);
 	}
 
 	SDL_Quit();
