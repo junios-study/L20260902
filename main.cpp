@@ -45,10 +45,20 @@ int SDL_main(int argc, char* argv[])
 		SDL_SetRenderDrawColor(MyRenderer, 0, 0, 0, 0);
 		SDL_RenderClear(MyRenderer);
 
-		SDL_Rect MyRect{ 100, 100, 100, 100 };
-		SDL_SetRenderDrawColor(MyRenderer, 255, 0, 0, 0);
+		for (int i = 0; i < 20000; ++i)
+		{
+			SDL_Rect MyRect{ rand() % 800, rand() % 600, rand() % 400, rand() % 400 };
+			SDL_SetRenderDrawColor(MyRenderer, rand() % 256, rand() % 256, rand() % 256, 0);
 
-		SDL_RenderDrawRect(MyRenderer, &MyRect);
+			if (rand() % 2 == 0)
+			{
+				SDL_RenderDrawRect(MyRenderer, &MyRect);
+			}
+			else
+			{
+				SDL_RenderFillRect(MyRenderer, &MyRect);
+			}
+		}
 
 		SDL_RenderPresent(MyRenderer);
 	}
