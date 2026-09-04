@@ -142,7 +142,7 @@ void UEngine::OpenLevel(std::string MapName)
 
 	std::sort(GetWorld()->GetActors().begin(), GetWorld()->GetActors().end(), 
 		[&](AActor* A, AActor* B) {
-			return (A->Layer > B->Layer);
+			return (A->Layer < B->Layer);
 		}
 	);
 }

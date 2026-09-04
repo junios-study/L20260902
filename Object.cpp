@@ -13,3 +13,8 @@ UWorld* UObject::GetWorld() const
 {
 	return World;
 }
+
+void UObject::SetWorld(UWorld* NewWorld)
+{
+	World = NewWorld;
+}

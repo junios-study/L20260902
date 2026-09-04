@@ -9,6 +9,7 @@ public:
 	virtual ~UObject();
 
 	virtual UWorld* GetWorld() const;
+	virtual void SetWorld(UWorld* NewWorld);
 
 protected:
 	UWorld* World;

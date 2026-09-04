@@ -1,4 +1,6 @@
 #pragma once
+//struct // stack, 변수로만듬, 자주 자주 삭제
+//class // heap, new, 오래 오래 삭제
 
 struct FVector2D
 {
