@@ -33,5 +33,10 @@ public:
 	int Layer = 0;
 
 	bool bIsCollisionEnable = false;
+
+	int R = 255;
+	int G = 255;
+	int B = 255;
+	int A = 0;
 };
 

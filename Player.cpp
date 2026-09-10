@@ -10,6 +10,10 @@ APlayer::APlayer()
 	Shape = 'P';
 	Layer = 100;
 	bIsCollisionEnable = true;
+	R = 0;
+	G = 0;
+	B = 255;
+	A = 0;
 }
 
 APlayer::~APlayer()

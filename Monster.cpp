@@ -10,6 +10,10 @@ AMonster::AMonster()
 	Shape = 'M';
 	Layer = 120;
 	bIsCollisionEnable = false;
+	R = 255;
+	G = 0;
+	B = 0;
+	A = 0;
 }
 
 AMonster::~AMonster()

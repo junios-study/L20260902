@@ -1,5 +1,7 @@
 #include "InputDevice.h"
 #include <conio.h>
+#include "SDL.h"
+#include "Engine.h"
 
 FInputDevice::FInputDevice()
 {
@@ -11,14 +13,16 @@ FInputDevice::~FInputDevice()
 
 int FInputDevice::Input()
 {
-	if (_kbhit())
-	{
-		KeyCode = _getch();
-	}
-	else
-	{
-		KeyCode = 0;
-	}
+	SDL_PollEvent(&GEngine->MyEvent);
 
-	return KeyCode;
+	//if (_kbhit())
+	//{
+	//	KeyCode = _getch();
+	//}
+	//else
+	//{
+	//	KeyCode = 0;
+	//}
+
+	return 0;
 }

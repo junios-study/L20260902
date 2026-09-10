@@ -1,6 +1,10 @@
 #pragma once
 #include "Object.h"
 #include <string>
+#include <SDL.h>
+
+#pragma comment(lib, "SDL2")
+#pragma comment(lib, "SDL2main")
 
 class UWorld;
 class FInputDevice;
@@ -34,11 +38,16 @@ public:
 		return InputDevice;
 	}
 
+	SDL_Window* MyWindow = nullptr;
+	SDL_Event MyEvent;
+
 protected:
 	void Input();
 	bool bIsRunning = true;
 	FInputDevice* InputDevice = nullptr;
 	FRenderer* Renderer = nullptr;
+
+
 };
 
 

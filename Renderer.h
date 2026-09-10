@@ -1,5 +1,6 @@
 #pragma once
 #include <windows.h>
+#include <SDL.h>
 
 class AActor;
 
@@ -16,5 +17,7 @@ public:
 	HANDLE BufferHandle[2];
 
 	int CurrentBufferIndex = 0;
+
+	SDL_Renderer* MyRenderer = nullptr;
 };
 

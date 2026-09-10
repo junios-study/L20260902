@@ -37,10 +37,22 @@ UEngine::~UEngine()
 		delete World;
 		World = nullptr;
 	}
+
+	if (Renderer)
+	{
+		delete Renderer;
+		Renderer = nullptr;
+	}
+
+	SDL_DestroyWindow(MyWindow);
+	SDL_Quit();
 }
 
 void UEngine::Init()
 {
+	SDL_Init(SDL_INIT_EVERYTHING);
+	MyWindow = SDL_CreateWindow("Game", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
+
 	InputDevice = new FInputDevice();
 	Renderer = new FRenderer();
 
@@ -56,6 +68,20 @@ void UEngine::Run()
 	while (bIsRunning)
 	{
 		Input();
+		//Tick();
+		if (MyEvent.type == SDL_QUIT)
+		{
+			bIsRunning = false;
+			return;
+		}
+		else if (MyEvent.type == SDL_KEYDOWN)
+		{
+			if (MyEvent.key.keysym.sym == SDLK_ESCAPE)
+			{
+				bIsRunning = false;
+				return;
+			}
+		}
 		World->Tick();
 		Renderer->Clear();
 		World->Render();

@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include <windows.h> 
 #include <iostream>
+#include "Engine.h"
 
 FRenderer::FRenderer()
 {
@@ -13,12 +14,18 @@ FRenderer::FRenderer()
 	CursorInfo.dwSize = 1;
 	SetConsoleCursorInfo(BufferHandle[0], &CursorInfo);
 	SetConsoleCursorInfo(BufferHandle[1], &CursorInfo);
+
+
+	MyRenderer = SDL_CreateRenderer(GEngine->MyWindow, -1, SDL_RENDERER_ACCELERATED);
+
 }
 
 FRenderer::~FRenderer()
 {
 	CloseHandle(BufferHandle[0]);
 	CloseHandle(BufferHandle[1]);
+
+	SDL_DestroyRenderer(MyRenderer);
 }
 
 void FRenderer::Render(AActor* DrawActor) const
@@ -29,7 +36,8 @@ void FRenderer::Render(AActor* DrawActor) const
 	Buffer[0] = DrawActor->Shape;
 	WriteConsole(BufferHandle[CurrentBufferIndex], Buffer, 1, nullptr, nullptr);
 
-	//std::cout << DrawActor->Shape;
+	SDL_SetRenderDrawColor(MyRenderer, DrawActor->R, DrawActor->G, DrawActor->B, DrawActor->A);
+	SDL_RenderDrawPoint(MyRenderer, DrawActor->Location.X, DrawActor->Location.Y);
 }
 
 void FRenderer::Clear()
@@ -38,6 +46,9 @@ void FRenderer::Clear()
 	DWORD DW;
 	FillConsoleOutputCharacter(BufferHandle[CurrentBufferIndex],
 		' ', 80 * 25, Coord, &DW);
+
+	SDL_SetRenderDrawColor(MyRenderer, 0, 0, 0, 0);
+	SDL_RenderClear(MyRenderer);
 }
 
 void FRenderer::Present()
@@ -45,4 +56,6 @@ void FRenderer::Present()
 	SetConsoleActiveScreenBuffer(BufferHandle[CurrentBufferIndex]);
 	CurrentBufferIndex++;
 	CurrentBufferIndex = CurrentBufferIndex % 2;
+
+	SDL_RenderPresent(MyRenderer);
 }
