@@ -20,8 +20,16 @@ AMonster::~AMonster()
 {
 }
 
-void AMonster::Tick()
+void AMonster::Tick(Uint64 DeltaSeconds)
 {
+	ElapsedTime += DeltaSeconds;
+	if (ElapsedTime < ExecuteTime)
+	{
+		return;
+	}
+
+	ElapsedTime = 0;
+
 	char VirtualKeyCode[4] = { 'w','s','a','d' };
 	std::vector<AActor*> CollideActors;
 	int KeyCode = VirtualKeyCode[rand() % 4];

@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include <vector>
+#include "SDL.h"
 
 class AActor;
 
@@ -11,7 +12,7 @@ public:
 
 	virtual ~UWorld();
 
-	void Tick();
+	void Tick(Uint64 DeltaSeconds);
 	void Render();
 
 	template<typename T>

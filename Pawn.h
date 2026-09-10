@@ -9,7 +9,7 @@ public:
 	APawn();
 	virtual ~APawn();
 
-	virtual void Tick() override;
+	virtual void Tick(Uint64 DeltaSeconds) override;
 
 	virtual void Render() override;
 

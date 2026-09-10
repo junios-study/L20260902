@@ -8,7 +8,7 @@ APawn::~APawn()
 {
 }
 
-void APawn::Tick()
+void APawn::Tick(Uint64 DeltaSeconds)
 {
 }
 

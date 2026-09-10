@@ -18,6 +18,6 @@ public:
 	APlayer();
 	virtual ~APlayer();
 
-	virtual void Tick() override;
+	virtual void Tick(Uint64 DeltaSeconds) override;
 };
 

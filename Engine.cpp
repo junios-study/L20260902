@@ -51,7 +51,7 @@ UEngine::~UEngine()
 void UEngine::Init()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	MyWindow = SDL_CreateWindow("Game", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
+	MyWindow = SDL_CreateWindow("Game", 100, 100, 600, 600, SDL_WINDOW_SHOWN);
 
 	InputDevice = new FInputDevice();
 	Renderer = new FRenderer();
@@ -67,6 +67,14 @@ void UEngine::Run()
 {
 	while (bIsRunning)
 	{
+		DeltaSeconds = SDL_GetTicks64() - LastTick;
+		LastTick = SDL_GetTicks64();
+		ElapsedTime += DeltaSeconds;
+		if (ElapsedTime < FrameTime)
+		{
+			continue;
+		}
+
 		Input();
 		//Tick();
 		if (MyEvent.type == SDL_QUIT)
@@ -82,7 +90,7 @@ void UEngine::Run()
 				return;
 			}
 		}
-		World->Tick();
+		World->Tick(DeltaSeconds);
 		Renderer->Clear();
 		World->Render();
 		Renderer->Present();

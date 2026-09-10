@@ -9,11 +9,11 @@ UWorld::~UWorld()
 {
 }
 
-void UWorld::Tick()
+void UWorld::Tick(Uint64 DeltaSeconds)
 {
 	for (auto Actor : Actors)
 	{
-		Actor->Tick();
+		Actor->Tick(DeltaSeconds);
 	}
 
 }

@@ -47,7 +47,11 @@ protected:
 	FInputDevice* InputDevice = nullptr;
 	FRenderer* Renderer = nullptr;
 
+	Uint64 DeltaSeconds;
+	Uint64 LastTick;
 
+	Uint64 ElapsedTime = 0;
+	Uint64 FrameTime = 166; //(1.0/60) 모니터가 60hz
 };
 
 

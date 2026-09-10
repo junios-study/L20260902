@@ -10,10 +10,9 @@ AActor::~AActor()
 {
 }
 
-void AActor::Tick()
+void AActor::Tick(Uint64 DeltaSeconds)
 {
 }
-
 
 void AActor::Render()
 {

@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "Vector2D.h"
+#include "SDL.h"
 
 class AActor : public UObject
 {
@@ -21,7 +22,7 @@ public:
 	//	Location = InValue;
 	//}
 
-	virtual void Tick();
+	virtual void Tick(Uint64 DeltaSeconds);
 	virtual void Render();
 
 	virtual UWorld* GetWorld() const override final;

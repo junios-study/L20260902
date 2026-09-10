@@ -20,42 +20,46 @@ APlayer::~APlayer()
 {
 }
 
-void APlayer::Tick()
+void APlayer::Tick(Uint64 DeltaSeconds)
 {
-	std::vector<AActor*> CollideActors;
-	int KeyCode = GEngine->GetInputDevice()->GetKeyCode();
-	if (KeyCode == 'w')
+	if (GEngine->MyEvent.type == SDL_KEYDOWN)
 	{
-		//Predict
-		Location.Y--;
-		if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
+		std::vector<AActor*> CollideActors;
+
+		SDL_Keycode KeyCode = GEngine->MyEvent.key.keysym.sym;
+		if (KeyCode == SDLK_w)
+		{
+			//Predict
+			Location.Y--;
+			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
+			{
+				Location.Y++;
+			}
+
+		}
+		if (KeyCode == SDLK_s)
 		{
 			Location.Y++;
+			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
+			{
+				Location.Y--;
+			}
 		}
-		
-	}
-	if (KeyCode == 's')
-	{
-		Location.Y++;
-		if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
-		{
-			Location.Y--;
-		}
-	}
-	if (KeyCode == 'a')
-	{
-		Location.X--;
-		if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
-		{
-			Location.X++;
-		}
-	}
-	if (KeyCode == 'd')
-	{
-		Location.X++;
-		if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
+		if (KeyCode == SDLK_a)
 		{
 			Location.X--;
+			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
+			{
+				Location.X++;
+			}
+		}
+		if (KeyCode == SDLK_d)
+		{
+			Location.X++;
+			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
+			{
+				Location.X--;
+			}
 		}
 	}
 }
