@@ -9,6 +9,9 @@ AWall::AWall()
 	G = 255;
 	B = 255;
 	A = 0;
+
+	Load(".\\data\\wall.bmp");
+
 }
 
 AWall::~AWall()

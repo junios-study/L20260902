@@ -14,6 +14,9 @@ AMonster::AMonster()
 	G = 0;
 	B = 0;
 	A = 0;
+
+	Load(".\\data\\monster.bmp");
+
 }
 
 AMonster::~AMonster()

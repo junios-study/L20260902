@@ -18,6 +18,13 @@ public:
 	APlayer();
 	virtual ~APlayer();
 
+	virtual void Load(std::string Path) override;
+
 	virtual void Tick(Uint64 DeltaSeconds) override;
+
+	void NextFrame();
+
+	int Index = 0;
+	int Direction = 0;
 };
 

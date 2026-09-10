@@ -9,6 +9,8 @@ AFloor::AFloor()
 	G = 0;
 	B = 0;
 	A = 0;
+
+	Load(".\\data\\floor.bmp");
 }
 
 AFloor::~AFloor()

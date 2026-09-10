@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "Vector2D.h"
 #include "SDL.h"
+#include <string>
 
 class AActor : public UObject
 {
@@ -22,6 +23,8 @@ public:
 	//	Location = InValue;
 	//}
 
+	virtual void Load(std::string Path);
+
 	virtual void Tick(Uint64 DeltaSeconds);
 	virtual void Render();
 
@@ -30,7 +33,7 @@ public:
 
 //protected:
 	FVector2D Location;
-	char Shape;
+	char Shape = ' ';
 	int Layer = 0;
 
 	bool bIsCollisionEnable = false;
@@ -39,5 +42,13 @@ public:
 	int G = 255;
 	int B = 255;
 	int A = 0;
+
+
+	//Surface 메모리 화면 공간 버퍼
+	SDL_Surface* BMPSurface = nullptr;
+
+	//VRAM에 잡는 공간
+	SDL_Texture* BMPTexture = nullptr;
+
 };
 

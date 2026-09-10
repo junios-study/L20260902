@@ -4,6 +4,7 @@
 #include "World.h"
 #include "SystemLibrary.h"
 #include <vector>
+#include "Renderer.h"
 
 APlayer::APlayer()
 {
@@ -14,10 +15,24 @@ APlayer::APlayer()
 	G = 0;
 	B = 255;
 	A = 0;
+
+	Load(".\\data\\player.bmp");
+
 }
 
 APlayer::~APlayer()
 {
+}
+
+void APlayer::Load(std::string Path)
+{
+	BMPSurface = SDL_LoadBMP(Path.c_str());//CPU
+
+
+	SDL_SetColorKey(BMPSurface, 1, SDL_MapRGB(BMPSurface->format, 255, 0, 255));
+
+	//GPU
+	BMPTexture = SDL_CreateTextureFromSurface(GEngine->GetRenderer()->MyRenderer, BMPSurface);
 }
 
 void APlayer::Tick(Uint64 DeltaSeconds)
@@ -62,4 +77,10 @@ void APlayer::Tick(Uint64 DeltaSeconds)
 			}
 		}
 	}
+}
+
+void APlayer::NextFrame()
+{
+	Index++;
+	Index = Index % 5;
 }

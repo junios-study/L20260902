@@ -3,6 +3,8 @@
 #include <windows.h> 
 #include <iostream>
 #include "Engine.h"
+#include "Player.h"
+
 
 FRenderer::FRenderer()
 {
@@ -36,11 +38,30 @@ void FRenderer::Render(AActor* DrawActor) const
 	//Buffer[0] = DrawActor->Shape;
 	//WriteConsole(BufferHandle[CurrentBufferIndex], Buffer, 1, nullptr, nullptr);
 
+
 	int SizeX = 60;
 	int SizeY = 60;
-	SDL_SetRenderDrawColor(MyRenderer, DrawActor->R, DrawActor->G, DrawActor->B, DrawActor->A);
-	SDL_Rect MyRect{ DrawActor->Location.X * SizeX , DrawActor->Location.Y * SizeY, SizeX, SizeY };
-	SDL_RenderFillRect(MyRenderer, &MyRect);
+	//SDL_SetRenderDrawColor(MyRenderer, DrawActor->R, DrawActor->G, DrawActor->B, DrawActor->A);
+	//SDL_Rect MyRect{ DrawActor->Location.X * SizeX , DrawActor->Location.Y * SizeY, SizeX, SizeY };
+	//SDL_RenderFillRect(MyRenderer, &MyRect);
+
+	APlayer* MyPlayer = dynamic_cast<APlayer*>(DrawActor);
+
+	if (MyPlayer)
+	{
+		int SpriteSizeX = MyPlayer->BMPSurface->w / 5;
+		int SpriteSizeY = MyPlayer->BMPSurface->h / 5;
+		SDL_Rect DestRect{ MyPlayer->Location.X * SizeX , MyPlayer->Location.Y * SizeY, SizeX, SizeY };
+		SDL_Rect SrcRect{ SpriteSizeX * MyPlayer->Index, SpriteSizeY * MyPlayer->Direction,  SpriteSizeX , SpriteSizeY };
+
+		SDL_RenderCopy(MyRenderer, MyPlayer->BMPTexture, &SrcRect, &DestRect);
+		MyPlayer->NextFrame();
+	}
+	else
+	{
+		SDL_Rect DestRect{ DrawActor->Location.X * SizeX , DrawActor->Location.Y * SizeY, SizeX, SizeY };
+		SDL_RenderCopy(MyRenderer, DrawActor->BMPTexture, nullptr, &DestRect);
+	}
 }
 
 void FRenderer::Clear()

@@ -9,6 +9,9 @@ AGoal::AGoal()
 	G = 255;
 	B = 0;
 	A = 0;
+
+	Load(".\\data\\goal.bmp");
+
 }
 
 AGoal::~AGoal()
