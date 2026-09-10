@@ -82,20 +82,29 @@ void Render()
 	SDL_SetRenderDrawColor(MyRenderer, 0, 0, 0, 0);
 	SDL_RenderClear(MyRenderer);
 
-	for (int i = 0; i < 60000; ++i)
-	{
-		SDL_Rect MyRect{ rand() % 800, rand() % 600, rand() % 400, rand() % 400 };
-		SDL_SetRenderDrawColor(MyRenderer, rand() % 256, rand() % 256, rand() % 256, 0);
 
-		if (rand() % 2 == 0)
+	for (int i = 0; i < 5000; ++i)
+	{
+		SDL_SetRenderDrawColor(MyRenderer, rand() % 255, rand() % 255, rand() % 255, 0);
+
+		int Polygon = 20;
+		int Radius = rand() % 290 + 10;
+		int CenterX = rand() % 600;
+		int CenterY = rand() % 400;
+
+		for (float Theta = 0; Theta < 360; Theta += Polygon)
 		{
-			SDL_RenderDrawRect(MyRenderer, &MyRect);
-		}
-		else
-		{
-			SDL_RenderFillRect(MyRenderer, &MyRect);
+			double StartRadian = Theta * ((3.14) / 180);
+			double EndRadian = (Theta + Polygon) * ((3.14) / 180);
+			int StartX = Radius * cos(StartRadian) + CenterX;
+			int StartY = Radius * sin(StartRadian) + CenterY;
+			int EndX = Radius * cos(EndRadian) + CenterX;
+			int EndY = Radius * sin(EndRadian) + CenterY;
+
+			SDL_RenderDrawLine(MyRenderer, StartX, StartY, EndX, EndY);
 		}
 	}
+
 
 	SDL_RenderPresent(MyRenderer);
 }
