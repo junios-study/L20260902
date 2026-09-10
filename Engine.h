@@ -38,6 +38,11 @@ public:
 		return InputDevice;
 	}
 
+	__forceinline Uint64 GetWorldDeltaSeconds() const
+	{
+		return DeltaSeconds;
+	}
+
 	SDL_Window* MyWindow = nullptr;
 	SDL_Event MyEvent;
 

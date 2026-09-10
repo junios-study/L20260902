@@ -44,6 +44,7 @@ void APlayer::Tick(Uint64 DeltaSeconds)
 		SDL_Keycode KeyCode = GEngine->MyEvent.key.keysym.sym;
 		if (KeyCode == SDLK_w)
 		{
+			Direction = 2;
 			//Predict
 			Location.Y--;
 			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
@@ -54,6 +55,7 @@ void APlayer::Tick(Uint64 DeltaSeconds)
 		}
 		if (KeyCode == SDLK_s)
 		{
+			Direction = 3;
 			Location.Y++;
 			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
 			{
@@ -62,6 +64,7 @@ void APlayer::Tick(Uint64 DeltaSeconds)
 		}
 		if (KeyCode == SDLK_a)
 		{
+			Direction = 0;
 			Location.X--;
 			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
 			{
@@ -70,6 +73,7 @@ void APlayer::Tick(Uint64 DeltaSeconds)
 		}
 		if (KeyCode == SDLK_d)
 		{
+			Direction = 1;
 			Location.X++;
 			if (USystemLibrary::CheckCollide(GetWorld(), this, CollideActors))
 			{
@@ -81,6 +85,17 @@ void APlayer::Tick(Uint64 DeltaSeconds)
 
 void APlayer::NextFrame()
 {
+	static int ElapsedTime = 0;
+
+	ElapsedTime += GEngine->GetWorldDeltaSeconds();
+
+	if (ElapsedTime < 200)
+	{
+		return;
+	}
+
+	ElapsedTime = 0;
+
 	Index++;
-	Index = Index % 5;
+	Index = Index % SpriteCountX;
 }

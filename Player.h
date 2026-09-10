@@ -26,5 +26,7 @@ public:
 
 	int Index = 0;
 	int Direction = 0;
+	int SpriteCountX = 5;
+	int SpriteCountY = 5;
 };
 

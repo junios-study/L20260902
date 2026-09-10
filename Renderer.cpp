@@ -49,8 +49,8 @@ void FRenderer::Render(AActor* DrawActor) const
 
 	if (MyPlayer)
 	{
-		int SpriteSizeX = MyPlayer->BMPSurface->w / 5;
-		int SpriteSizeY = MyPlayer->BMPSurface->h / 5;
+		int SpriteSizeX = MyPlayer->BMPSurface->w / MyPlayer->SpriteCountX;
+		int SpriteSizeY = MyPlayer->BMPSurface->h / MyPlayer->SpriteCountY;
 		SDL_Rect DestRect{ MyPlayer->Location.X * SizeX , MyPlayer->Location.Y * SizeY, SizeX, SizeY };
 		SDL_Rect SrcRect{ SpriteSizeX * MyPlayer->Index, SpriteSizeY * MyPlayer->Direction,  SpriteSizeX , SpriteSizeY };
 
